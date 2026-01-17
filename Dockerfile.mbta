@@ -21,6 +21,9 @@ ENV REVISION="1"
 
 # Create a directory for the custom data bundle
 RUN mkdir -p /bundle
+
+# Build the bundle
+RUN sed -i 's/Xmx[0-9]\+g/Xmx16g/' /oba/build_bundle.sh
 RUN /oba/build_bundle.sh
 
 # Unset GTFS_URL so that build_bundle.sh doesn't run after build time
